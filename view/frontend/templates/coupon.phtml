@@ -1,0 +1,66 @@
+<?php 
+    $delay = $block->getDelayOpen(); 
+    $discount = $block->getDiscount();
+    $expiration = $block->getExpiration();
+?>
+
+<?php if (!$block->shouldRender()) return; ?>
+
+<div id="offer-popup" >
+    <div class="popup-content">
+        <button id="close-popup">&times;</button>
+        
+        <div class="popup-icon">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="url(#gradient)" stroke="#FFD700" stroke-width="1"/>
+                <defs>
+                    <linearGradient id="gradient" x1="12" y1="2" x2="12" y2="21">
+                        <stop offset="0%" stop-color="#FFD700"/>
+                        <stop offset="100%" stop-color="#FFA500"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <h2 class="popup-title">SPECIAL OFFER!</h2>
+        <div class="popup-discount">
+            <span class="discount-number"><?php echo $discount; ?>%</span>
+            <span class="discount-text">OFF</span>
+        </div>
+        <p class="popup-subtitle">Don’t miss this amazing opportunity</p>
+        
+        <div class="popup-features">
+            <div class="feature">
+                <span class="check">✓</span> Free shipping
+            </div>
+            <div class="feature">
+                <span class="check">✓</span> Valid for a limited time
+            </div>
+            <div class="feature">
+                <span class="check">✓</span> All products
+            </div>
+        </div>
+
+        <button id="accept-popup" class="cta-button">
+            GET MY DISCOUNT!
+            <span class="arrow">→</span>
+        </button>
+        
+        <p class="popup-timer">
+            ⏰ Offer expires in: 
+            <span id="countdown" data-expiration="
+            <?= (int)$expiration?>">00:00</span>
+            
+        </p>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Mauro_CustomerCouponShow/js/coupon": {
+            "delay": <?= (int)$delay * 1000 ?>
+        }
+    }
+}
+</script>
