@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/config.xsd">
+
+    <default>
+        <discount_coupons_section>
+            <general>
+                <enabled>1</enabled>
+                <category_id></category_id>
+                <delay_open>5</delay_open>
+                <discount>50</discount>
+                <expiration>10</expiration>
+            </general>
+        </discount_coupons_section>
+    </default>
+
+</config>
